@@ -19,11 +19,41 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                            </li>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="Admin" asp-controller="Ilaclars" asp-action="Index">İlaçlar Yönetimi</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="Admin" asp-controller="Hastalars" asp-action="Index">Hastalar</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark fw-bold" href="/Admin/Kategoriler/Index">📁 Kategoriler</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-danger fw-bold" asp-area="Admin" asp-controller="Personeller" asp-action="PersonelEkle">⚕️ Personel Ekle</a>
+                                    </li>
+                                }
+
+                                @if (User.IsInRole("Musteri") || User.IsInRole("Admin"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark fw-bold text-primary" asp-area="Musteri" asp-controller="Urunler" asp-action="Index">💊 İlaç Listesi</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="btn btn-outline-danger fw-bold" asp-area="" asp-controller="Giris" asp-action="CikisYap">🚪 Çıkış Yap</a>
                         </li>
                     </ul>
                 </div>

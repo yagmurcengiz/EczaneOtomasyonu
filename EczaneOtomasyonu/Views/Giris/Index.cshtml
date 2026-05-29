@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null; // Giriş ekranında üst menü ve navigasyon görünmesin diye şablonu kapatıyoruz
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eczane Otomasyonu - Giriş Yap</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-dark d-flex align-items-center" style="height: 100vh;">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card shadow-lg border-0 rounded-3">
+                    <div class="card-header bg-primary text-white text-center py-4 rounded-top-3">
+                        <h3 class="fw-bold mb-0">💊 Eczane Otomasyonu</h3>
+                        <small class="text-white-50">Lütfen sistem bilgilerinizi giriniz</small>
+                    </div>
+                    <div class="card-body p-4">
+
+                        @if (ViewBag.Hata != null)
+                        {
+                            <div class="alert alert-danger text-center py-2">@ViewBag.Hata</div>
+                        }
+
+                        <form method="post" action="/Giris/Index">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" name="kullaniciAdi" type="text" placeholder="Kullanıcı Adı" required />
+                                <label>Kullanıcı Adı</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" name="sifre" type="password" placeholder="Şifre" required />
+                                <label>Şifre</label>
+                            </div>
+                            <button class="btn btn-primary w-100 py-2.5 fs-5 fw-bold mt-3 shadow-sm" type="submit">Sisteme Giriş Yap</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <a href="/Giris/KayitOl" class="text-decoration-none small text-muted">Henüz hesabınız yok mu? Kayıt Olun</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

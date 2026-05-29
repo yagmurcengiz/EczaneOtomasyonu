@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Yeni Personel Ekle";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 border-top border-primary border-4 rounded-3">
+                <div class="card-header bg-white text-center py-4">
+                    <h3 class="fw-bold text-primary mb-0">⚕️ Yetkili Personel Ekle</h3>
+                    <small class="text-muted">Sisteme sadece güvenilir eczacıları ve kalfaları ekleyiniz.</small>
+                </div>
+                <div class="card-body p-4">
+
+                    @if (ViewBag.Hata != null)
+                    {
+                        <div class="alert alert-danger text-center py-2">@ViewBag.Hata</div>
+                    }
+                    @if (ViewBag.Basari != null)
+                    {
+                        <div class="alert alert-success text-center py-2">@ViewBag.Basari</div>
+                    }
+
+                    <form action="/Admin/Personeller/PersonelEkle" method="post">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Kullanıcı Adı</label>
+                            <input type="text" name="kullaniciAdi" class="form-control form-control-lg" required placeholder="Örn: eczaci_ayse" autocomplete="off" />
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Şifre</label>
+                            <input type="password" name="sifre" class="form-control form-control-lg" required placeholder="Geçici bir şifre belirleyin" />
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg fw-bold shadow-sm">Sisteme Ekle ve Yetki Ver</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

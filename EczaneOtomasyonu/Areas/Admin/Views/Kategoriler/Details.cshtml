@@ -1,0 +1,30 @@
+﻿@model EczaneOtomasyonu.Models.Kategoriler
+
+@{
+    ViewData["Title"] = "Kategori Detayları";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-info text-white text-center py-3 rounded-top-4">
+                    <h4 class="mb-0 fw-bold">ℹ️ Kategori Detayı</h4>
+                </div>
+                <div class="card-body p-5 bg-light rounded-bottom-4 text-center">
+
+                    <div class="mb-4">
+                        <h5 class="fw-bold text-secondary mb-2">Kategori Adı</h5>
+                        <p class="display-6 text-dark fw-semibold mb-0">@Model.KategoriAdi</p>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-5 border-top pt-4">
+                        <a href="/Admin/Kategoriler/Index" class="btn btn-outline-secondary btn-lg px-4 fw-bold shadow-sm">🔙 Listeye Dön</a>
+                        <a href="/Admin/Kategoriler/Edit/@Model.KategoriId" class="btn btn-primary btn-lg px-5 fw-bold shadow-sm">✏️ Düzenle</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

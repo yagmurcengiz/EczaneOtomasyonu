@@ -1,0 +1,73 @@
+﻿@model EczaneOtomasyonu.Models.Hastalar
+
+@{
+    ViewData["Title"] = "Hasta Düzenle";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-primary text-white text-center py-3 rounded-top-4">
+                    <h4 class="mb-0 fw-bold">🧑‍⚕️ Hasta Bilgilerini Güncelle</h4>
+                </div>
+                <div class="card-body p-5 bg-light rounded-bottom-4">
+
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <input type="hidden" asp-for="HastaId" />
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label asp-for="Tc" class="form-label fw-bold text-secondary">T.C. Kimlik No</label>
+                                <input asp-for="Tc" class="form-control form-control-lg shadow-sm border-0" autocomplete="off" />
+                                <span asp-validation-for="Tc" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label asp-for="Ad" class="form-label fw-bold text-secondary">Ad</label>
+                                <input asp-for="Ad" class="form-control form-control-lg shadow-sm border-0" />
+                                <span asp-validation-for="Ad" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <label asp-for="Soyad" class="form-label fw-bold text-secondary">Soyad</label>
+                                <input asp-for="Soyad" class="form-control form-control-lg shadow-sm border-0" />
+                                <span asp-validation-for="Soyad" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label asp-for="Telefon" class="form-label fw-bold text-secondary">Telefon</label>
+                                <input asp-for="Telefon" class="form-control form-control-lg shadow-sm border-0" />
+                                <span asp-validation-for="Telefon" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-5">
+                                <label asp-for="KayitTarihi" class="form-label fw-bold text-secondary">Kayıt Tarihi</label>
+                                <input asp-for="KayitTarihi" class="form-control form-control-lg shadow-sm border-0" />
+                                <span asp-validation-for="KayitTarihi" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mt-2 border-top pt-4">
+                            <a asp-action="Index" class="btn btn-outline-secondary btn-lg px-4 fw-bold shadow-sm">🔙 Listeye Dön</a>
+                            <button type="submit" class="btn btn-primary btn-lg px-5 fw-bold shadow-sm">🔄 Değişiklikleri Kaydet</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

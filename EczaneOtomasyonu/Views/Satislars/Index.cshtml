@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EczaneOtomasyonu.Models.Satislar>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SatisTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToplamTutar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hasta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Personel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SatisTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToplamTutar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hasta.HastaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personel.PersonelId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SatisId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SatisId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SatisId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

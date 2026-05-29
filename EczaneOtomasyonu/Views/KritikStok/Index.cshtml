@@ -1,0 +1,29 @@
+﻿@model IEnumerable<EczaneOtomasyonu.Models.VwKritikStokRaporu>
+
+@{
+    ViewData["Title"] = "Kritik Stok Raporu";
+}
+
+<h1>⚠️ Kritik Stoktaki İlaçlar</h1>
+
+<table class="table table-striped table-hover mt-4">
+    <thead class="table-dark">
+        <tr>
+            <th>Barkod No</th>
+            <th>İlaç Adı</th>
+            <th>Mevcut Stok</th>
+            <th>Kategori</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BarkodNo</td>
+                <td>@item.IlacAdi</td>
+                <td class="text-danger fw-bold">@item.StokMiktari</td>
+                <td>@item.KategoriAdi</td>
+            </tr>
+        }
+    </tbody>
+</table>

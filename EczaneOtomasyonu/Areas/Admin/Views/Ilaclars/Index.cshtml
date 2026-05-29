@@ -1,0 +1,55 @@
+﻿@model IEnumerable<EczaneOtomasyonu.Models.Ilaclar>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p class="mb-4 mt-2">
+    <a href="/Admin/Ilaclars/Create" class="btn btn-success btn-lg fw-bold shadow-sm">➕ Yeni İlaç Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Barkod No</th>
+            <th>İlaç Adı</th>
+            <th>Birim Fiyat</th>
+            <th>Stok Miktarı</th>
+            <th>Son Kullanma Tarihi</th>
+            <th>Kategori</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BarkodNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IlacAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirimFiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StokMiktari)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SonKullanmaTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kategori.KategoriId)
+            </td>
+            <td>
+                <td>
+                    <a href="/Admin/Ilaclars/Edit/@item.BarkodNo" class="btn btn-primary btn-sm text-white" style="border-radius: 4px;">Düzenle</a>
+                    <a href="/Admin/Ilaclars/Details/@item.BarkodNo" class="btn btn-info btn-sm text-white" style="border-radius: 4px;">Detay</a>
+                    <a href="/Admin/Ilaclars/Delete/@item.BarkodNo" class="btn btn-danger btn-sm text-white" style="border-radius: 4px;">Sil</a>
+                </td>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

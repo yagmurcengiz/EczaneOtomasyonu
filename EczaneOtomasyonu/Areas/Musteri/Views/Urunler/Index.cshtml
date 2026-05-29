@@ -1,0 +1,50 @@
+﻿@model IEnumerable<EczaneOtomasyonu.Models.Ilaclar>
+
+@{
+    ViewData["Title"] = "Müşteri İlaç Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm border-0 bg-light p-4 mb-4">
+        <h1 class="display-6 fw-bold text-primary">🛒 Güncel İlaç Listemiz</h1>
+        <p class="lead text-muted mb-0">Eczanemizde bulunan aktif ilaç stoklarını ve birim fiyatlarını aşağıdan inceleyebilirsiniz.</p>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-8 mx-auto">
+            <form asp-action="Index" method="get" class="d-flex shadow-sm rounded">
+                <input type="text" name="aramaKelimesi" class="form-control form-control-lg border-primary border-2"
+                       placeholder="💊 İlaç adı arayın (Örn: Parol, Augmentin)..."
+                       value="@ViewData["ArananKelime"]" autocomplete="off" />
+
+                <button type="submit" class="btn btn-primary btn-lg px-4 fw-bold">Ara 🔍</button>
+
+                @if (ViewData["ArananKelime"] != null)
+                {
+                    <a asp-action="Index" class="btn btn-danger btn-lg px-4 fw-bold ms-2">Temizle ✖</a>
+                }
+            </form>
+        </div>
+    </div>
+    <table class="table table-striped table-hover shadow-sm border rounded">
+        <thead class="table-dark">
+            <tr>
+                <th>Barkod No</th>
+                <th>İlaç Adı</th>
+                <th>Birim Fiyat</th>
+                <th>Kategori</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.BarkodNo</td>
+                    <td class="fw-bold text-secondary">@item.IlacAdi</td>
+                    <td><span class="badge bg-success fs-6">@item.BirimFiyat ₺</span></td>
+                    <td>@item.Kategori?.KategoriAdi</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

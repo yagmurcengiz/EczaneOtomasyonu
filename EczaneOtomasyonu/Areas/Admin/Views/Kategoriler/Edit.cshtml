@@ -1,0 +1,43 @@
+﻿@model EczaneOtomasyonu.Models.Kategoriler
+
+@{
+    ViewData["Title"] = "Kategori Düzenle";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-warning text-dark text-center py-3 rounded-top-4">
+                    <h4 class="mb-0 fw-bold">✏️ Kategori Güncelle</h4>
+                </div>
+                <div class="card-body p-5 bg-light rounded-bottom-4">
+
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <input type="hidden" asp-for="KategoriId" />
+
+                        <div class="mb-4">
+                            <label asp-for="KategoriAdi" class="form-label fw-bold text-secondary">Kategori Adı</label>
+                            <input asp-for="KategoriAdi" class="form-control form-control-lg shadow-sm border-0" autocomplete="off" />
+                            <span asp-validation-for="KategoriAdi" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mt-2 border-top pt-4">
+                            <a href="/Admin/Kategoriler/Index" class="btn btn-outline-secondary btn-lg px-4 fw-bold shadow-sm">🔙 Listeye Dön</a>
+                            <button type="submit" class="btn btn-warning btn-lg px-5 fw-bold shadow-sm text-dark">🔄 Kaydet</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,59 @@
+﻿@model EczaneOtomasyonu.Models.Ilaclar
+
+@{
+    ViewData["Title"] = "İlaç Düzenle";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-warning text-dark text-center py-3 rounded-top-4">
+                    <h4 class="mb-0 fw-bold">✏️ İlaç Bilgilerini Güncelle</h4>
+                </div>
+                <div class="card-body p-5 bg-light rounded-bottom-4">
+
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <input type="hidden" asp-for="BarkodNo" />
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label asp-for="IlacAdi" class="form-label fw-bold text-secondary">İlaç Adı</label>
+                                <input asp-for="IlacAdi" class="form-control form-control-lg shadow-sm border-0" autocomplete="off" />
+                                <span asp-validation-for="IlacAdi" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <label asp-for="BirimFiyat" class="form-label fw-bold text-secondary">Birim Fiyatı (₺)</label>
+                                <input asp-for="BirimFiyat" type="text" class="form-control form-control-lg shadow-sm border-0" />
+                                <span asp-validation-for="BirimFiyat" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-5">
+                                <label asp-for="KategoriId" class="form-label fw-bold text-secondary">İlaç Kategorisi</label>
+                                <select asp-for="KategoriId" class="form-select form-select-lg shadow-sm border-0" asp-items="ViewBag.KategoriId"></select>
+                                <span asp-validation-for="KategoriId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mt-2 border-top pt-4">
+                            <a asp-action="Index" class="btn btn-outline-secondary btn-lg px-4 fw-bold shadow-sm">🔙 Listeye Dön</a>
+                            <button type="submit" class="btn btn-warning btn-lg px-5 fw-bold shadow-sm text-dark">🔄 Değişiklikleri Kaydet</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
