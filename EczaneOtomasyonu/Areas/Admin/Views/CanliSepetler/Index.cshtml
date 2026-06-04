@@ -1,0 +1,44 @@
+﻿@model IEnumerable<EczaneOtomasyonu.Models.Sepet>
+
+@{
+    ViewData["Title"] = "Canlı Sepet Takibi";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-dark text-white text-center py-3">
+            <h4 class="mb-0 fw-bold">🛒 Canlı Hasta Sepetleri (Anlık İzleme)</h4>
+        </div>
+        <div class="card-body p-4 bg-light">
+            <p class="text-muted text-center mb-4">Şu an sistemdeki hastaların sepetine eklediği ama henüz onaylamadığı anlık ilaç listesi.</p>
+
+            <table class="table table-hover bg-white rounded-3 shadow-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Hasta Adı Soyadı</th>
+                        <th>İlaç Adı</th>
+                        <th>Birim Fiyat</th>
+                        <th>Adet</th>
+                        <th>Toplam Tutar</th>
+                        <th>Ekleme Zamanı</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="fw-bold text-primary">@item.Hasta.Ad @item.Hasta.Soyad</td>
+                            <td>@item.Ilac.IlacAdi</td>
+                            <td>@item.Ilac.BirimFiyat.ToString("C2")</td>
+
+                            <td class="text-center fw-bold bg-light">@item.Adet adet</td>
+                            <td class="text-success fw-bold">@((item.Ilac.BirimFiyat * item.Adet).ToString("C2"))</td>
+
+                            <td class="text-secondary small">@item.EklemeTarihi.ToString("dd.MM.yyyy HH:mm")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

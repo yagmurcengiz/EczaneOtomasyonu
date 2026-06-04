@@ -32,7 +32,10 @@
                 <th>Barkod No</th>
                 <th>İlaç Adı</th>
                 <th>Birim Fiyat</th>
-                <th>Kategori</th>
+                @if (User.IsInRole("Musteri"))
+                {
+                    <th class="text-center">İşlem</th>
+                }
             </tr>
         </thead>
         <tbody>
@@ -42,9 +45,17 @@
                     <td>@item.BarkodNo</td>
                     <td class="fw-bold text-secondary">@item.IlacAdi</td>
                     <td><span class="badge bg-success fs-6">@item.BirimFiyat ₺</span></td>
-                    <td>@item.Kategori?.KategoriAdi</td>
+                    @if (User.IsInRole("Musteri"))
+                    {
+                        <td class="text-center">
+                            <a href="/Sepet/Ekle/@item.IlacId" class="btn btn-success btn-sm shadow-sm fw-bold">
+                                🛒 Sepete Ekle
+                            </a>
+                        </td>
+                    }
                 </tr>
             }
         </tbody>
+    </table>
     </table>
 </div>

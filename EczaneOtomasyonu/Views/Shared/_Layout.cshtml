@@ -48,6 +48,25 @@
                                         <a class="nav-link text-dark fw-bold text-primary" asp-area="Musteri" asp-controller="Urunler" asp-action="Index">💊 İlaç Listesi</a>
                                     </li>
                                 }
+
+                                @if (User.IsInRole("Musteri"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-success fw-bold" asp-area="" asp-controller="Sepet" asp-action="Index">
+                                            🛒 Sepetim
+                                        </a>
+                                    </li>
+                                }
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-danger fw-bold" asp-area="Admin" asp-controller="CanliSepetler" asp-action="Index">
+                                            📋 Müşteri Sepetlerini İzle
+                                        </a>
+                                    </li>
+                                }
+                                
                             }
                         </ul>
                     </ul>
